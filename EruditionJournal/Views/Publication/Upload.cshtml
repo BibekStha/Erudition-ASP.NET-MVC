@@ -1,0 +1,17 @@
+﻿@model EruditionJournal.Models.Publication
+@{
+    ViewBag.Title = "Upload Manuscript";
+}
+
+<h2>@Model.PublicationTitle</h2>
+
+<p>@ViewBag.errorMessage</p>
+
+<form method="post" action="/Publication/Upload/@Model.PublicationId">
+    <div class="form-group">
+        <label for="manuscript">Upload Manuscript</label>
+        <input type="file" class="form-control" id="manuscript" name="manuscript" />
+        <small>Only pdf files are accepted</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

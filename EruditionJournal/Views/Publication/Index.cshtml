@@ -1,0 +1,26 @@
+﻿@model IEnumerable<EruditionJournal.Models.Publication>
+@{
+    ViewBag.Title = "Publications";
+}
+
+<h2>Publications</h2>
+
+<div class="block-link">
+    @Html.ActionLink("Submit new publication", "Create")
+</div>
+
+<div class="container">
+    <div class="row table-header">
+        <div class="col-md-4 col-sm-4 col-xs-4">Title</div>
+        <div class="col-md-4 col-sm-4 col-xs-4">Author</div>
+        <div class="col-md-4 col-sm-4 col-xs-4">Category</div>
+    </div>
+    @foreach (var Publication in Model)
+    {
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4"><a href="/Publication/Detail/@(Publication.PublicationId)">@(Publication.PublicationTitle)</a></div>
+            <div class="col-md-4 col-sm-4 col-xs-4"><a href="/Publisher/Detail/@Publication.Publisher.PublisherId">@(Publication.Publisher.PublisherFName) @(Publication.Publisher.PublisherLName)</a></div>
+            <div class="col-md-4 col-sm-4 col-xs-4"><a href="/Category/Detail/@Publication.Category.CategoryId">@(Publication.Category.CategoryName)</a></div>
+        </div>
+    }
+</div>

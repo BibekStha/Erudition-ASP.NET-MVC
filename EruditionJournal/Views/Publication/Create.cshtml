@@ -1,0 +1,38 @@
+﻿@model EruditionJournal.Models.ViewModels.PublicationEdit
+@{
+    ViewBag.Title = "Submit new publication";
+}
+
+<h2>Submit new publication</h2>
+
+<form method="post" action="/Publication/Create">
+    <div class="form-group">
+        <label for="publicationTitle">Title</label>
+        <input type="text" class="form-control" id="publicationTitle" name="publicationTitle" />
+    </div>
+    <div class="form-group">
+        <label for="publicationPublisher">Publisher</label>
+        <select class="form-control" id="publicationPublisher" name="publicationPublisher">
+            <option value="null">--  Choose a Publisher  --</option>
+            @foreach (var Publisher in Model.publishers)
+            {
+                <option value="@Publisher.PublisherId">@Publisher.PublisherFName @Publisher.PublisherLName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="publicationCategory">Category</label>
+        <select class="form-control" id="publicationCategory" name="publicationCategory">
+            <option value="null">--  Choose a Category  --</option>
+            @foreach (var Category in Model.categories)
+            {
+                <option value="@Category.CategoryId">@Category.CategoryName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="publicationAbstract">Abstract</label>
+        <textarea rows="10" class="form-control" id="publicationAbstract" name="publicationAbstract"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary ">Submit publication</button>
+</form>

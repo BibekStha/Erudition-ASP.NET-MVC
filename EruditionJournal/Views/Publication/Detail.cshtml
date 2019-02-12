@@ -1,0 +1,22 @@
+﻿@model EruditionJournal.Models.Publication
+@{
+    ViewBag.Title = Model.PublicationTitle;
+}
+
+<h2>@Model.PublicationTitle</h2>
+
+<div>
+    <strong>Abstract</strong>
+    <p>@Model.PublicationAbstract</p>
+</div>
+
+<div>
+    @if (Model.HasManuscript == 0)
+    {
+        <small>You do not have a manuscript yet. Please upload one.</small>
+        <a class="btn btn-default" href="/Publication/Upload/@Model.PublicationId">Upload Manuscript</a>
+    } else
+    {
+        <p>You do have a manuscript</p>
+    }
+</div>
