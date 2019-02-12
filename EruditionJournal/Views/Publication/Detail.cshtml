@@ -17,6 +17,10 @@
         <a class="btn btn-default" href="/Publication/Upload/@Model.PublicationId">Upload Manuscript</a>
     } else
     {
-        <p>You do have a manuscript</p>
+        <a href="/Publication/Upload/@Model.PublicationId" class="btn btn-primary">Update manuscript</a>
+        <div>
+            <embed src="~/uploads/manuscripts/@(Model.PublicationId).pdf" width="100%" height="700"
+                   type="application/pdf">
+        </div>
     }
 </div>

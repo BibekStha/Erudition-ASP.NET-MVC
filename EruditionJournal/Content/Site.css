@@ -1,12 +1,13 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 1px;
+    padding-right: 1px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -38,4 +39,33 @@ textarea {
 .category-list {
     padding: 10px 0;
     text-align: center;
+}
+
+.navbar {
+    background-color: white;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.jumbotron small {
+    display: block;
+    margin-bottom: 40px;
+}
+
+footer {
+    padding: 0 25px;
+    font-size: .9em;
+}
+
+.front-page-text {
+    font-size: 2em;
+    font-weight: 300;
+}
+
+.emphasized-words {
+    font-size: 1.2em;
+    font-weight: 200;
+    font-style: italic;
 }

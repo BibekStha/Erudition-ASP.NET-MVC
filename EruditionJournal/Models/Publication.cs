@@ -27,6 +27,11 @@ namespace EruditionJournal.Models
         [Required]
         public int HasManuscript { get; set; }
 
+        [DataType(DataType.Upload)]
+        [Display(Name = "Upload Manuscript")]
+        [Required(ErrorMessage = "Please choose file to upload.")]
+        public string File { get; set; }
+
         // Each publication has one publisher
         public virtual Publisher Publisher { get; set; }
 

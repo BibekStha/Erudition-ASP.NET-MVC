@@ -94,30 +94,37 @@ namespace EruditionJournal.Controllers
 
             // Manuscript upload section
             var hasmanus = 0;
-
-            if (manuscript.ContentLength > 0)
+            try
             {
-                var extension = Path.GetExtension(manuscript.FileName).Substring(1);
-                if (extension == "pdf")
+                if (manuscript.ContentLength > 0)
                 {
-                    // filename
-                    string fn = id + "." + extension;
+                    var extension = Path.GetExtension(manuscript.FileName).Substring(1);
+                    if (extension == "pdf")
+                    {
+                        // filename
+                        string fn = id + "." + extension;
 
-                    // file path
-                    string path = Path.Combine(Server.MapPath("~/uploads/manuscripts"), fn);
+                        // file path
+                        string path = Path.Combine(Server.MapPath("~/uploads/manuscripts"), fn);
 
-                    // uploading the file in the server with name matching the id
-                    manuscript.SaveAs(path);
+                        // uploading the file in the server with name matching the id
+                        manuscript.SaveAs(path);
 
-                    hasmanus = 1;
+                        hasmanus = 1;
+                    }
                 }
-            }
 
-            if (hasmanus == 0)
+                if (hasmanus == 0)
+                {
+                    ViewBag.FileStatus = "The file extension is not supported.";
+                    return View(publication);
+                }
+                ViewBag.FileStatus = "File was successfully uploaded.";
+            } catch (Exception)
             {
-                ViewBag.errorMessage = "The file extension is not supported.";
-                return View(publication);
+                ViewBag.FileStatus = "Error occured while uploading file.";
             }
+            
 
             string query = "update Publication set HasManuscript = 1 where PublicationId = " + id;
             db.Database.ExecuteSqlCommand(query);

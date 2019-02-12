@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FileTestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PublicationController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
@@ -140,6 +141,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902120225000_InitialCreate.cs" />
+    <Compile Include="Migrations\201902120225000_InitialCreate.Designer.cs">
+      <DependentUpon>201902120225000_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902120436497_fileupload.cs" />
+    <Compile Include="Migrations\201902120436497_fileupload.Designer.cs">
+      <DependentUpon>201902120436497_fileupload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Publication.cs" />
     <Compile Include="Models\Publisher.cs" />
@@ -195,9 +205,11 @@
     <Content Include="Views\Publication\Index.cshtml" />
     <Content Include="Views\Publication\Detail.cshtml" />
     <Content Include="Views\Publication\Create.cshtml" />
+    <Content Include="Views\FileTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="uploads\manuscripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -211,6 +223,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201902120225000_InitialCreate.resx">
+      <DependentUpon>201902120225000_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902120436497_fileupload.resx">
+      <DependentUpon>201902120436497_fileupload.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
