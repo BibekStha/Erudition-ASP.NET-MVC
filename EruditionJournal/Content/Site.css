@@ -20,5 +20,22 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 400px;
+}
+
+.table-header {
+    font-weight: bolder;
+}
+
+.block-link {
+    padding: 20px 0;
+}
+
+.row {
+    text-align: center;
+}
+
+.category-list {
+    padding: 10px 0;
+    text-align: center;
 }

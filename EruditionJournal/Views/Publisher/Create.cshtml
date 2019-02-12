@@ -1,0 +1,21 @@
+﻿@model IEnumerable<EruditionJournal.Models.Publisher>
+@{
+    ViewBag.Title = "Add Publisher";
+}
+
+<h2>Add Publisher</h2>
+<form method="post" action="/Publisher/Create">
+    <div class="form-group">
+        <label for="publisherFName">First Name</label>
+        <input type="text" class="form-control" id="publisherFName" name="publisherFName"/>
+    </div>
+    <div class="form-group">
+        <label for="publisherLName">Last Name</label>
+        <input type="text" class="form-control" id="publisherLName" name="publisherLName" />
+    </div>
+    <div class="form-group">
+        <label for="publisherDisplayName">Display Name</label>
+        <input type="text" class="form-control" id="publisherDisplayName" name="publisherDisplayName" />
+    </div>
+    <button type="submit" class="btn btn-primary ">Add publisher</button>
+</form>

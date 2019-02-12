@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EruditionJournal.Models.Publisher>
+@{
+    ViewBag.Title = "Publishers";
+}
+
+<h2>Publishers</h2>
+
+<div class="block-link">
+    @Html.ActionLink("Register as publisher", "Create")
+</div>
+
+<div class="container">
+    <div class="row table-header">
+        <div class="col-md-6 col-sm-6 col-xs-6">Full Name</div>
+        <div class="col-md-6 col-sm-6 col-xs-6">Display Name</div>
+    </div>
+    @foreach (var Publisher in Model)
+    {
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6"><a href="/Publisher/Detail/@(Publisher.PublisherId)">@(Publisher.PublisherFName) @(Publisher.PublisherLName)</a></div>
+            <div class="col-md-6 col-sm-6 col-xs-6">@(Publisher.PublisherDisplayName)</div>
+        </div>
+    }
+</div>

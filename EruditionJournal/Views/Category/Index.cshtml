@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EruditionJournal.Models.Category>
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>Categories</h2>
+
+<div class="block-link">
+    @Html.ActionLink("Add a category", "Create")
+</div>
+
+<div class="block-link">
+    @if (Model.Count() > 0)
+    {
+        <em>Click its name below to edit/delete the category</em>
+    }
+    else
+    {
+        <em>You do not have any category yet. Add one by clicking the link above.</em>
+    }
+
+</div>
+
+<div class="container">
+    @foreach (var Category in Model)
+    {
+        <div class="col-md-3 col-sm-4 col-xs-6 category-list">
+            <a href="/Category/Edit/@Category.CategoryId">@Category.CategoryName</a>
+        </div>
+    }
+</div>
