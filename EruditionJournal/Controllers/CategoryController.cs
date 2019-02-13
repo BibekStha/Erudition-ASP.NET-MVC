@@ -17,7 +17,7 @@ namespace EruditionJournal.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View(db.Categories.ToList().OrderByDescending(s => s.CategoryName));
+            return View(db.Categories.ToList().OrderBy(s => s.CategoryName));
         }
 
         // GET: Category/Create

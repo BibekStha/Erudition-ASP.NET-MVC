@@ -16,7 +16,7 @@ namespace EruditionJournal.Controllers
         // GET: Publisher
         public ActionResult Index()
         {
-            return View(db.Publishers.ToList().OrderByDescending(s => s.PublisherFName));
+            return View(db.Publishers.ToList().OrderBy(s => s.PublisherFName));
         }
 
         // GET: Publisher/Create
