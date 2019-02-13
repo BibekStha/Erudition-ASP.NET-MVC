@@ -3,22 +3,28 @@
     ViewBag.Title = "Publishers";
 }
 
-<h2>Publishers</h2>
-
-<div class="block-link">
-    @Html.ActionLink("Register as publisher", "Create")
-</div>
-
 <div class="container">
-    <div class="row table-header">
-        <div class="col-md-6 col-sm-6 col-xs-6">Full Name</div>
-        <div class="col-md-6 col-sm-6 col-xs-6">Display Name</div>
+    <h2>Publishers</h2>
+
+    <div class="block-link">
+        <a href="/Publisher/Create" class="btn btn-default btn-sm">Register as publisher</a>
     </div>
-    @foreach (var Publisher in Model)
-    {
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-6"><a href="/Publisher/Detail/@(Publisher.PublisherId)">@(Publisher.PublisherFName) @(Publisher.PublisherLName)</a></div>
-            <div class="col-md-6 col-sm-6 col-xs-6">@(Publisher.PublisherDisplayName)</div>
-        </div>
-    }
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Display Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Publisher in Model)
+            {
+                <tr>
+                    <td><a href="/Publisher/Detail/@(Publisher.PublisherId)">@(Publisher.PublisherFName) @(Publisher.PublisherLName)</a></td>
+                    <td>@(Publisher.PublisherDisplayName)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

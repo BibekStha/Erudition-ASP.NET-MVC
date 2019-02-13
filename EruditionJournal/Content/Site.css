@@ -6,8 +6,6 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 1px;
-    padding-right: 1px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -47,6 +45,7 @@ textarea {
 
 .jumbotron {
     text-align: center;
+    background-color: #A0D8FF;
 }
 
 .jumbotron small {
@@ -68,4 +67,37 @@ footer {
     font-size: 1.2em;
     font-weight: 200;
     font-style: italic;
+    color: #78a9cc;
+}
+
+.front-page-text strong {
+    color: #6994b2;
+}
+
+.table>thead>tr>th {
+    border: none;
+}
+
+table {
+    margin-top: 30px;
+}
+
+table *{
+    text-align: center;
+}
+
+.table>tbody>tr>td {
+    border-top: 1px solid #A0D8FF;
+}
+
+table thead {
+    background-color: #A0D8FF;
+}
+
+.embed-item {
+    margin: 40px 0 20px;
+}
+
+.display-name {
+    color: darkcyan;
 }

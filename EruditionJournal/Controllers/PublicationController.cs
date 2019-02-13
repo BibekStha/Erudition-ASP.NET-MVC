@@ -70,6 +70,41 @@ namespace EruditionJournal.Controllers
             return View(publication);
         }
 
+        // GET: Publication/Edit/[id]
+        public ActionResult Edit(int? id)
+        {
+            PublicationEdit publicationedit = new PublicationEdit();
+            publicationedit.Publication = db.Publications.Find(id);
+            publicationedit.publishers = db.Publishers.ToList();
+            publicationedit.categories = db.Categories.ToList();
+
+            if (id == null || publicationedit.Publication == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(publicationedit);
+        }
+
+        // POST: Publication/Edit/[id]
+        [HttpPost]
+        public ActionResult Edit(int? id, string publicationTitle, int publicationPublisher,
+            int publicationCategory, string publicationAbstract)
+        {
+            string query = "update Publication set PublicationTitle = @title, PublicationAbstract = @abstract, publisher_PublisherId = @publisher, category_CategoryId = @category" +
+                "where PublicationId = " + id;
+
+            SqlParameter[] myparams = new SqlParameter[4];
+            myparams[0] = new SqlParameter("@title", publicationTitle);
+            myparams[1] = new SqlParameter("@abstract", publicationAbstract);
+            myparams[2] = new SqlParameter("@publisher", publicationPublisher);
+            myparams[3] = new SqlParameter("@category", publicationCategory);
+
+            db.Database.ExecuteSqlCommand(query, myparams);
+            Debug.WriteLine(query);
+            return RedirectToAction("Index");
+        }
+
         // GET: Publication/Upload/[id]
         public ActionResult Upload(int? id)
         {
@@ -81,7 +116,7 @@ namespace EruditionJournal.Controllers
             return View(publication);
         }
 
-        //POST: Publication/Upload/[id]
+        // POST: Publication/Upload/[id]
         [HttpPost]
         public ActionResult Upload(int? id, HttpPostedFileBase manuscript)
         {
@@ -130,6 +165,34 @@ namespace EruditionJournal.Controllers
             db.Database.ExecuteSqlCommand(query);
 
             return RedirectToAction("Detail/" + id);
+        }
+
+        //GET: Publication/Delete/[id]
+        public ActionResult Delete(int? id)
+        {
+            Publication publication = db.Publications.Find(id);
+            if (id == null || publication == null)
+            {
+                return HttpNotFound();
+            }
+            return View(publication);
+        }
+
+        //POST: Publication/Del/[id]
+        //This method actually deletes
+        [HttpPost]
+        public ActionResult Del(int? id)
+        {
+            Publication publication = db.Publications.Find(id);
+            if (id == null || publication == null)
+            {
+                return HttpNotFound();
+            }
+
+            string query = "delete from Publication where PublicationId =" + id;
+            db.Database.ExecuteSqlCommand(query);
+
+            return RedirectToAction("Index");
         }
     }
 }

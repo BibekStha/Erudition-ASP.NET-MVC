@@ -3,21 +3,33 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@(Model.PublisherFName) @(Model.PublisherLName)</h2>
-
-<div class="block-link">
-    <div>@Html.ActionLink("Edit", "Edit/" + Model.PublisherId)</div>
-    <div>@Html.ActionLink("Delete", "Delete/" + Model.PublisherId)</div>
-    <div>@Html.ActionLink("View all Publishers", "Index")</div>
-</div>
-
 <div class="container">
-    <div class="row table-header">
-        <div class="col-md-6">Full Name</div>
-        <div class="col-md-6">Display Name</div>
-    </div>
+    <h2 class="row">@(Model.PublisherFName) @(Model.PublisherLName) { <span class="display-name">@Model.PublisherDisplayName</span> }</h2>
     <div class="row">
-        <div class="col-md-6">@(Model.PublisherFName) @(Model.PublisherLName)</div>
-        <div class="col-md-6">@(Model.PublisherDisplayName)</div>
+        <a href="/Publisher/Edit/@Model.PublisherId" class="btn btn-default btn-sm">Edit</a>
+        <a href="/Publisher/Delete/@Model.PublisherId" class="btn btn-default btn-sm">Delete</a>
+        <a href="/Publisher" class="btn btn-default btn-sm">Back to publishers list</a>
     </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Publication</th>
+                <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Publication in Model.Publications)
+            {
+                <tr>
+                    <td>
+                        <a href="/Publication/Detail/@(Publication.PublicationId)">@(Publication.PublicationTitle)</a>
+                    </td>
+                    <td>
+                        <a href="/Category/Detail/@Publication.Category.CategoryId">@(Publication.Category.CategoryName)</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

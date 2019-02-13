@@ -3,24 +3,47 @@
     ViewBag.Title = Model.PublicationTitle;
 }
 
-<h2>@Model.PublicationTitle</h2>
+<div class="container">
+    <h2 class="row">@Model.PublicationTitle</h2>
+    <div class="row">
+        <a href="/Publication/Edit/@Model.PublicationId" class="btn btn-default btn-sm">Edit</a>
+        <a href="/Publication/Delete/@Model.PublicationId" class="btn btn-default btn-sm">Delete</a>
+        <a href="/Publication" class="btn btn-default btn-sm">Back to publications list</a>
+    </div>
 
-<div>
-    <strong>Abstract</strong>
-    <p>@Model.PublicationAbstract</p>
-</div>
-
-<div>
-    @if (Model.HasManuscript == 0)
-    {
-        <small>You do not have a manuscript yet. Please upload one.</small>
-        <a class="btn btn-default" href="/Publication/Upload/@Model.PublicationId">Upload Manuscript</a>
-    } else
-    {
-        <a href="/Publication/Upload/@Model.PublicationId" class="btn btn-primary">Update manuscript</a>
-        <div>
-            <embed src="~/uploads/manuscripts/@(Model.PublicationId).pdf" width="100%" height="700"
-                   type="application/pdf">
+    <div class="container row">
+        <div class="col-sm-6">
+            <h3>
+                Author
+                <small><a href="/Publisher/Detail/@Model.Publisher.PublisherId">@Model.Publisher.PublisherFName @Model.Publisher.PublisherLName</a></small>
+            </h3>
         </div>
-    }
+        <div class="col-sm-6">
+            <h3>
+                Category
+                <small><a href="/Category/Detail/@Model.Category.CategoryId">@Model.Category.CategoryName</a></small>
+            </h3>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="row">Abstract</h3>
+        <p>@Model.PublicationAbstract</p>
+    </div>
+
+    <div>
+        @if (Model.HasManuscript == 0)
+        {
+            <small>You do not have a manuscript yet. Please upload one.</small>
+            <a class="btn btn-default" href="/Publication/Upload/@Model.PublicationId">Upload Manuscript</a>
+        }
+        else
+        {
+            <div class="embed-item">
+                <embed src="~/uploads/manuscripts/@(Model.PublicationId).pdf" width="100%" height="700"
+                       type="application/pdf">
+            </div>
+            <a href="/Publication/Upload/@Model.PublicationId" class="btn btn-default">Change manuscript</a>
+        }
+    </div>
 </div>

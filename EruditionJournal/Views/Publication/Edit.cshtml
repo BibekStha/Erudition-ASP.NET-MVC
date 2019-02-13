@@ -1,15 +1,15 @@
 ﻿@model EruditionJournal.Models.ViewModels.PublicationEdit
 @{
-    ViewBag.Title = "Submit new publication";
+    ViewBag.Title = "Edit " + Model.Publication.PublicationTitle;
 }
 
 <div class="container">
-    <h2>Submit new publication</h2>
+    <h2>Edit @Model.Publication.PublicationTitle</h2>
 
     <form method="post" action="/Publication/Create">
         <div class="form-group">
             <label for="publicationTitle">Title</label>
-            <input type="text" class="form-control" id="publicationTitle" name="publicationTitle" />
+            <input type="text" class="form-control" id="publicationTitle" name="publicationTitle" value="@Model.Publication.PublicationTitle"/>
         </div>
         <div class="form-group">
             <label for="publicationPublisher">Publisher</label>
@@ -17,7 +17,14 @@
                 <option value="null">--  Choose a Publisher  --</option>
                 @foreach (var Publisher in Model.publishers)
                 {
-                    <option value="@Publisher.PublisherId">@Publisher.PublisherFName @Publisher.PublisherLName</option>
+                    if (Publisher.PublisherId == Model.Publication.Publisher.PublisherId)
+                    {
+                        <option value="@Publisher.PublisherId" selected>@Publisher.PublisherFName @Publisher.PublisherLName</option>
+                    }
+                    else
+                    {
+                        <option value="@Publisher.PublisherId">@Publisher.PublisherFName @Publisher.PublisherLName</option>
+                    }
                 }
             </select>
         </div>
@@ -27,7 +34,14 @@
                 <option value="null">--  Choose a Category  --</option>
                 @foreach (var Category in Model.categories)
                 {
-                    <option value="@Category.CategoryId">@Category.CategoryName</option>
+                    if (Category.CategoryId == Model.Publication.Category.CategoryId)
+                    {
+                        <option value="@Category.CategoryId" selected>@Category.CategoryName</option>
+                    }
+                    else
+                    {
+                        <option value="@Category.CategoryId">@Category.CategoryName</option>
+                    }
                 }
             </select>
         </div>
