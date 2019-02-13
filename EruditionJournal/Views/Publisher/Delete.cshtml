@@ -3,14 +3,16 @@
     ViewBag.Title = "Delete " + Model.PublisherFName + " " + Model.PublisherLName;
 }
 
-<h2>Delete @Model.PublisherFName @Model.PublisherLName</h2>
+<div class="container">
+    <h2>Delete @Model.PublisherFName @Model.PublisherLName</h2>
 
-<form method="post" action="/Publisher/Del/@Model.PublisherId">
-    <div class="form-group">
-        <p>Are you sure you want to delete @Model.PublisherFName @Model.PublisherLName from Publishers List?</p>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Delete</button>
-        <a class="btn btn-default" href="/Publisher">Cancel</a>
-    </div>
-</form>
+    <form method="post" action="/Publisher/Del/@Model.PublisherId">
+        <div class="form-group">
+            <p>Are you sure you want to delete @Model.PublisherFName @Model.PublisherLName from Publishers List?</p>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Delete</button>
+            <a class="btn btn-default" href="/Publisher">Cancel</a>
+        </div>
+    </form>
+</div>
