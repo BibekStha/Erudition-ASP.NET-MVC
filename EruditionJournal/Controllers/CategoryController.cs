@@ -17,7 +17,7 @@ namespace EruditionJournal.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Categories.ToList().OrderByDescending(s => s.CategoryName));
         }
 
         // GET: Category/Create
@@ -41,12 +41,11 @@ namespace EruditionJournal.Controllers
         }
 
         // GET: Category/Detail/[id]
-        // Not using this method yet
-        /*public ActionResult Detail(int id)
+        public ActionResult Detail(int id)
         {
             string query = "select * from Category where CategoryId = @id";
             return View(db.Categories.SqlQuery(query, new SqlParameter("@id", id)).FirstOrDefault());
-        }*/
+        }
 
         // GET: Category/Edit/[id]
         public ActionResult Edit(int? id)

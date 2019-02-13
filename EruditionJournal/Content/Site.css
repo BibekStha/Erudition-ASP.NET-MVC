@@ -4,10 +4,6 @@
     font-family: 'Raleway', sans-serif;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-}
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -37,6 +33,10 @@ textarea {
 .category-list {
     padding: 10px 0;
     text-align: center;
+}
+
+.category-label {
+    padding: 10px 20px;
 }
 
 .navbar {
@@ -92,6 +92,7 @@ table *{
 
 table thead {
     background-color: #A0D8FF;
+    color: #333333;
 }
 
 .embed-item {
@@ -100,4 +101,9 @@ table thead {
 
 .display-name {
     color: darkcyan;
+}
+
+.label-primary {
+    background-color: #A0D8FF;
+    color: #333333;
 }

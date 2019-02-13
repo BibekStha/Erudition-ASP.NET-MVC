@@ -21,17 +21,27 @@ namespace EruditionJournal.Controllers
         // GET: Publication
         public ActionResult Index()
         {
-            return View(db.Publications.ToList());
+            return View(db.Publications.ToList().OrderByDescending(s => s.PublishedDate));
         }
 
         // GET: Publication/Create
-        public ActionResult Create()
+        public ActionResult Create(int? cat, int? publisher)
         {
             PublicationEdit publicationEdit = new PublicationEdit
             {
-                publishers = db.Publishers.ToList(),
-                categories = db.Categories.ToList()
+                publishers = db.Publishers.ToList().OrderBy(s => s.PublisherFName),
+                categories = db.Categories.ToList().OrderBy(s => s.CategoryName)
             };
+
+            if (cat.HasValue)
+            {
+                ViewBag.CategoryId = cat;
+            }
+            
+            if (publisher.HasValue)
+            {
+                ViewBag.PublisherId = publisher;
+            }
             return View(publicationEdit);
         }
 
@@ -75,8 +85,8 @@ namespace EruditionJournal.Controllers
         {
             PublicationEdit publicationedit = new PublicationEdit();
             publicationedit.Publication = db.Publications.Find(id);
-            publicationedit.publishers = db.Publishers.ToList();
-            publicationedit.categories = db.Categories.ToList();
+            publicationedit.publishers = db.Publishers.ToList().OrderBy(s => s.PublisherFName);
+            publicationedit.categories = db.Categories.ToList().OrderBy(s => s.CategoryName);
 
             if (id == null || publicationedit.Publication == null)
             {

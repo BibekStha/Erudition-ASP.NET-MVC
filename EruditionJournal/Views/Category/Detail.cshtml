@@ -1,0 +1,46 @@
+﻿@model EruditionJournal.Models.Category
+@{
+    ViewBag.Title = Model.CategoryName;
+}
+
+<div class="container">
+    <h2 class="row">@(Model.CategoryName)</h2>
+    <div class="row">
+        <a href="/Category/Edit/@Model.CategoryId" class="btn btn-default btn-sm">Edit</a>
+        <a href="/Category/Delete/@Model.CategoryId" class="btn btn-default btn-sm">Delete</a>
+        <a href="/Category" class="btn btn-default btn-sm">Go to category list</a>
+    </div>
+
+    @if (Model.Publications.Count == 0)
+    {
+    <div class="row block-link">
+        <em>There are no publications under this category yet</em>
+        <a class="btn btn-default" href="/Publication/Create?Cat=@Model.CategoryId">Submit a publication under this category
+        </a>
+    </div>
+    }
+    else
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Publication</th>
+                    <th scope="col">Publisher</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Publication in Model.Publications)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Publication/Detail/@(Publication.PublicationId)">@(Publication.PublicationTitle)</a>
+                        </td>
+                        <td>
+                            <a href="/Publisher/Detail/@Publication.Publisher.PublisherId">@(Publication.Publisher.PublisherDisplayName)</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

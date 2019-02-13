@@ -1,6 +1,6 @@
 ﻿@model EruditionJournal.Models.Publisher
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.PublisherFName + " " + Model.PublisherLName;
 }
 
 <div class="container">
@@ -8,28 +8,41 @@
     <div class="row">
         <a href="/Publisher/Edit/@Model.PublisherId" class="btn btn-default btn-sm">Edit</a>
         <a href="/Publisher/Delete/@Model.PublisherId" class="btn btn-default btn-sm">Delete</a>
-        <a href="/Publisher" class="btn btn-default btn-sm">Back to publishers list</a>
+        <a href="/Publisher" class="btn btn-default btn-sm">Go to publishers list</a>
     </div>
 
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Publication</th>
-                <th scope="col">Category</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var Publication in Model.Publications)
-            {
+    @if (Model.Publications.Count == 0)
+    {
+        <div class="row block-link">
+            <em>There are no publications by this publisher yet</em>
+            <a class="btn btn-default" href="/Publication/Create?publisher=@Model.PublisherId">
+                Submit a publication by this publisher
+            </a>
+        </div>
+    }
+    else
+    {
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <td>
-                        <a href="/Publication/Detail/@(Publication.PublicationId)">@(Publication.PublicationTitle)</a>
-                    </td>
-                    <td>
-                        <a href="/Category/Detail/@Publication.Category.CategoryId">@(Publication.Category.CategoryName)</a>
-                    </td>
+                    <th scope="col">Publication</th>
+                    <th scope="col">Category</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var Publication in Model.Publications)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Publication/Detail/@(Publication.PublicationId)">@(Publication.PublicationTitle)</a>
+                        </td>
+                        <td>
+                            <a href="/Category/Detail/@Publication.Category.CategoryId">@(Publication.Category.CategoryName)</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
 </div>

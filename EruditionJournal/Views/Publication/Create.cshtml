@@ -17,7 +17,14 @@
                 <option value="null">--  Choose a Publisher  --</option>
                 @foreach (var Publisher in Model.publishers)
                 {
-                    <option value="@Publisher.PublisherId">@Publisher.PublisherFName @Publisher.PublisherLName</option>
+                    if (ViewBag.PublisherId == Publisher.PublisherId)
+                    {
+                        <option value="@Publisher.PublisherId" selected>@Publisher.PublisherFName @Publisher.PublisherLName</option>
+                    }
+                    else
+                    {
+                        <option value="@Publisher.PublisherId">@Publisher.PublisherFName @Publisher.PublisherLName</option>
+                    }
                 }
             </select>
         </div>
@@ -27,7 +34,14 @@
                 <option value="null">--  Choose a Category  --</option>
                 @foreach (var Category in Model.categories)
                 {
-                    <option value="@Category.CategoryId">@Category.CategoryName</option>
+                    if (ViewBag.CategoryId == Category.CategoryId)
+                    {
+                        <option value="@Category.CategoryId" selected>@Category.CategoryName</option>
+                    }
+                    else
+                    {
+                        <option value="@Category.CategoryId">@Category.CategoryName</option>
+                    }
                 }
             </select>
         </div>

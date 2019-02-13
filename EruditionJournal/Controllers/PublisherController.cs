@@ -16,7 +16,7 @@ namespace EruditionJournal.Controllers
         // GET: Publisher
         public ActionResult Index()
         {
-            return View(db.Publishers.ToList());
+            return View(db.Publishers.ToList().OrderByDescending(s => s.PublisherFName));
         }
 
         // GET: Publisher/Create
@@ -47,8 +47,6 @@ namespace EruditionJournal.Controllers
         public ActionResult Detail(int id)
         {
             string query = "select * from Publisher where PublisherId=@id";
-
-            Debug.WriteLine(query);
 
             return View(db.Publishers.SqlQuery(query, new SqlParameter("@id", id)).FirstOrDefault());
         }
