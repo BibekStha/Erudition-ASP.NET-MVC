@@ -152,7 +152,11 @@ namespace EruditionJournal.Controllers
                         string path = Path.Combine(Server.MapPath("~/uploads/manuscripts"), fn);
 
                         // Deleting old file, if it exists
-                        System.IO.File.Delete(path);
+                        FileInfo fileInfo = new FileInfo(path);
+                        if (fileInfo.Exists)
+                        {
+                            fileInfo.Delete();
+                        }
 
                         // uploading the file in the server with name matching the id
                         manuscript.SaveAs(path);
