@@ -101,8 +101,7 @@ namespace EruditionJournal.Controllers
         public ActionResult Edit(int? id, string publicationTitle, int publicationPublisher,
             int publicationCategory, string publicationAbstract)
         {
-            string query = "update Publication set PublicationTitle = @title, PublicationAbstract = @abstract, publisher_PublisherId = @publisher, category_CategoryId = @category" +
-                "where PublicationId = " + id;
+            string query = "update Publication set PublicationTitle = @title, PublicationAbstract = @abstract, publisher_PublisherId = @publisher, category_CategoryId = @category where PublicationId = " + id;
 
             SqlParameter[] myparams = new SqlParameter[4];
             myparams[0] = new SqlParameter("@title", publicationTitle);
