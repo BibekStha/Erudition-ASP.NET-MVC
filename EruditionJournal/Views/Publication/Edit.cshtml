@@ -6,7 +6,7 @@
 <div class="container">
     <h2>Edit @Model.Publication.PublicationTitle</h2>
 
-    <form method="post" action="/Publication/Create">
+    <form method="post" action="/Publication/Edit/@Model.Publication.PublicationId">
         <div class="form-group">
             <label for="publicationTitle">Title</label>
             <input type="text" class="form-control" id="publicationTitle" name="publicationTitle" value="@Model.Publication.PublicationTitle"/>
