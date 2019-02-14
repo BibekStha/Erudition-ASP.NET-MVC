@@ -151,6 +151,9 @@ namespace EruditionJournal.Controllers
                         // file path
                         string path = Path.Combine(Server.MapPath("~/uploads/manuscripts"), fn);
 
+                        // Deleting old file, if it exists
+                        System.IO.File.Delete(path);
+
                         // uploading the file in the server with name matching the id
                         manuscript.SaveAs(path);
 
@@ -167,6 +170,7 @@ namespace EruditionJournal.Controllers
             } catch (Exception)
             {
                 ViewBag.FileStatus = "Error occured while uploading file.";
+                return View(publication);
             }
             
 

@@ -13,7 +13,7 @@ namespace EruditionJournal.Models
         public string PublicationTitle { get; set; }
 
         [Required]
-        [StringLength(750)]
+        [StringLength(1500)]
         [Display(Name = "Abstract")]
         public string PublicationAbstract { get; set; }
 

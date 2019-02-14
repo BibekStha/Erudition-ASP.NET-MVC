@@ -40,8 +40,8 @@
         else
         {
             <div class="embed-item">
-                <embed src="~/uploads/manuscripts/@(Model.PublicationId).pdf" width="100%" height="700"
-                       type="application/pdf">
+                <object type="application/pdf" src="~/uploads/manuscripts/@(Model.PublicationId).pdf" width="100%" height="auto">
+                </object>
             </div>
             <a href="/Publication/Upload/@Model.PublicationId" class="btn btn-default">Change manuscript</a>
         }
