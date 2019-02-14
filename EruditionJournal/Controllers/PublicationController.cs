@@ -111,7 +111,7 @@ namespace EruditionJournal.Controllers
 
             db.Database.ExecuteSqlCommand(query, myparams);
             Debug.WriteLine(query);
-            return RedirectToAction("Index");
+            return RedirectToAction("Detail/" + id);
         }
 
         // GET: Publication/Upload/[id]
